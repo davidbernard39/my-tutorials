@@ -5,24 +5,27 @@
 
 describe('PhoneCat Application', function () {
 
-    describe('phoneList', function () {
-        beforeEach(function () {
-            browser.get('index.html');
-        });
-
-        it('should filter the phone list as a user types into the search box', function () {
-            var phoneList = element.all(by.repeater('phone in $ctrl.phones'));
-            var query = element(by.model('$ctrl.query'));
-
-            expect(phoneList.count()).toBe(3);
-
-            query.sendKeys('nexus');
-            expect(phoneList.count()).toBe(1);
-
-            query.clear();
-            query.sendKeys('motorolla');
-            expect(phoneList.count()).toBe(2);
-        });
+  describe('phoneList', function () {
+    beforeEach(function () {
+      browser.get('index.html');
     });
+
+    it('should redirect `index.html` to `index.html#!/phones', function() {
+      browser.get('index.html');
+      expect(browser.getLocationAbsUrl()).toBe('/phones');
+    });
+
+    describe('View: Phone details', function() {
+
+      beforeEach(function() {
+        browser.get('index.html#!/phones/nexus-s');
+      });
+
+      it('should display placeholder page with `phoneId`', function() {
+        expect(element(by.binding('$ctrl.phoneId')).getText()).toBe('nexus-s');
+      });
+
+    });
+  });
 
 });
