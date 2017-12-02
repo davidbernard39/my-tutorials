@@ -6,6 +6,7 @@ public class GameRunner {
 
     public static void main(String[] args) {
         TicTacToeGrid ticTacToeGrid = new TicTacToeGrid();
+        Referee referee = new Referee(ticTacToeGrid);
         Player player1 = new Player(ticTacToeGrid, "X");
         Player player2 = new Player(ticTacToeGrid, "O");
 
@@ -14,7 +15,7 @@ public class GameRunner {
 
         int turn = 0;
         Scanner scanner = new Scanner(System.in);
-        while (!ticTacToeGrid.hasWinner()) {
+        while (!referee.hasWinner()) {
             Player whoPlay = (turn % 2 == 0) ? player1 : player2;
             System.out.println("Player " + whoPlay.token() + " : ");
 
@@ -29,6 +30,6 @@ public class GameRunner {
             turn += 1;
         }
         System.out.println("Game over");
-        System.out.println("Player " + ticTacToeGrid.winner() + " won !");
+        System.out.println("Player " + referee.winner() + " won !");
     }
 }
