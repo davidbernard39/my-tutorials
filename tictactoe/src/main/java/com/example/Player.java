@@ -1,7 +1,7 @@
 package com.example;
 
 public class Player {
-    private TicTacToeGrid grid;
+    protected TicTacToeGrid grid;
     private String playerToken;
 
     public Player(TicTacToeGrid grid, String playerToken) {

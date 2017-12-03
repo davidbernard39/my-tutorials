@@ -18,6 +18,10 @@ public class TicTacToeGrid {
         clear();
     }
 
+    public boolean canPlay(int lineIdx, int rowIdx) {
+        return EMPTY_CASE.equals(getCaseValue(lineIdx,rowIdx));
+    }
+
     public String print() {
         String result = "";
         for (int lineIdx = FIRST_LINE_IDX ; lineIdx < LINES_COUNT ; lineIdx++) {

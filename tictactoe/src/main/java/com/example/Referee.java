@@ -10,10 +10,6 @@ public class Referee {
         this.ticTacToeGrid = ticTacToeGrid;
     }
 
-    public boolean canPlay(int lineIdx, int rowIdx) {
-        return EMPTY_CASE.equals(ticTacToeGrid.getCaseValue(lineIdx,rowIdx));
-    }
-
     public String winner() {
         String winner = getWinningLine();
         if (EMPTY_CASE.equals(winner)) {
