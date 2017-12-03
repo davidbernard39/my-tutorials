@@ -63,4 +63,16 @@ public class RefereeTest {
         grid.play("O", 2, 0);
         assertThat(referee.hasWinner()).isTrue();
     }
+
+
+    @Test
+    public void shouldBeEnableToPlayIfNoPlayer() {
+        assertThat(referee.canPlay(0,0)).isTrue();
+    }
+
+    @Test
+    public void shouldNotBeEnableToPlayIfPlayer() {
+        grid.play("X", 0,0);
+        assertThat(referee.canPlay(0,0)).isFalse();
+    }
 }

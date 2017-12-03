@@ -21,8 +21,8 @@ public class GameRunner {
 
             String keyboardEntry = scanner.next();
             String[] move = keyboardEntry.split(",");
-            if (ticTacToeGrid.canPlay(Integer.valueOf(move[0]), Integer.valueOf(move[1]))) {
-                ticTacToeGrid.play(whoPlay.token(), Integer.valueOf(move[0]), Integer.valueOf(move[1]));
+            if (referee.canPlay(Integer.valueOf(move[0]), Integer.valueOf(move[1]))) {
+                whoPlay.play(Integer.valueOf(move[0]), Integer.valueOf(move[1]));
             } else {
                 continue;
             }

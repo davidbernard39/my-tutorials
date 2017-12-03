@@ -29,16 +29,4 @@ public class TicTacToeGridTest {
                 "   |   |   \n");
     }
 
-    @Test
-    public void shouldBeEnableToPlayIfNoPlayer() {
-        TicTacToeGrid grid = new TicTacToeGrid();
-        assertThat(grid.canPlay(0,0)).isTrue();
-    }
-
-    @Test
-    public void shouldNotBeEnableToPlayIfPlayer() {
-        TicTacToeGrid grid = new TicTacToeGrid();
-        grid.play("X", 0,0);
-        assertThat(grid.canPlay(0,0)).isFalse();
-    }
 }
