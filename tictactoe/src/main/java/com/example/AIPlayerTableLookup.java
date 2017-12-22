@@ -1,6 +1,6 @@
 package com.example;
 
-public class AIPlayerTableLookup extends Player {
+public class AIPlayerTableLookup extends Player implements AIPlayer {
 
     // Moves {row, col} in order of preferences. {0, 0} at top-left corner
     private int[][] preferredMoves = {

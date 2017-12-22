@@ -29,20 +29,20 @@ public class Referee {
     }
 
     private String getWinningDiagUpDown() {
-        if (ticTacToeGrid.isPlayedCase(FIRST_LINE_IDX, FIRST_ROW_IDX)
-                && ticTacToeGrid.areCasesEqual(FIRST_LINE_IDX,FIRST_ROW_IDX,1,1)
-                && ticTacToeGrid.areCasesEqual(FIRST_LINE_IDX,FIRST_ROW_IDX,2, 2)) {
-            return ticTacToeGrid.getCaseValue(FIRST_LINE_IDX,FIRST_ROW_IDX);
+        if (ticTacToeGrid.isPlayedCase(FIRST_LINE_IDX, FIRST_COL_IDX)
+                && ticTacToeGrid.areCasesEqual(FIRST_LINE_IDX, FIRST_COL_IDX,1,1)
+                && ticTacToeGrid.areCasesEqual(FIRST_LINE_IDX, FIRST_COL_IDX,2, 2)) {
+            return ticTacToeGrid.getCaseValue(FIRST_LINE_IDX, FIRST_COL_IDX);
 
         }
         return EMPTY_CASE;
     }
 
     private String getWinningDiagDownUp() {
-        if (ticTacToeGrid.isPlayedCase(2, FIRST_ROW_IDX)
-                && ticTacToeGrid.areCasesEqual(2,FIRST_ROW_IDX,1,1)
-                && ticTacToeGrid.areCasesEqual(2,FIRST_ROW_IDX,0, 2)) {
-            return ticTacToeGrid.getCaseValue(2,FIRST_ROW_IDX);
+        if (ticTacToeGrid.isPlayedCase(2, FIRST_COL_IDX)
+                && ticTacToeGrid.areCasesEqual(2, FIRST_COL_IDX,1,1)
+                && ticTacToeGrid.areCasesEqual(2, FIRST_COL_IDX,0, 2)) {
+            return ticTacToeGrid.getCaseValue(2, FIRST_COL_IDX);
 
         }
         return EMPTY_CASE;
@@ -52,7 +52,7 @@ public class Referee {
         String winner = EMPTY_CASE;
         for (int lineIdx = FIRST_LINE_IDX; lineIdx < LINES_COUNT; lineIdx++) {
             if (isWinningLine(lineIdx)) {
-                winner = ticTacToeGrid.getCaseValue(lineIdx, FIRST_ROW_IDX);
+                winner = ticTacToeGrid.getCaseValue(lineIdx, FIRST_COL_IDX);
                 break;
             }
         }
@@ -61,7 +61,7 @@ public class Referee {
 
     private String getWinningRow() {
         String winner = EMPTY_CASE;
-        for (int rowIdx = FIRST_ROW_IDX; rowIdx < ROWS_COUNT; rowIdx++) {
+        for (int rowIdx = FIRST_COL_IDX; rowIdx < COLS_COUNT; rowIdx++) {
             if (isWinningRow(rowIdx)) {
                 winner = ticTacToeGrid.getCaseValue(FIRST_LINE_IDX, rowIdx);
                 break;
@@ -71,9 +71,9 @@ public class Referee {
     }
 
     private boolean isWinningLine(int lineIdx) {
-        return ticTacToeGrid.isPlayedCase(lineIdx, FIRST_ROW_IDX)
-                && ticTacToeGrid.areCasesEqual(lineIdx,FIRST_ROW_IDX,lineIdx,1)
-                && ticTacToeGrid.areCasesEqual(lineIdx,FIRST_ROW_IDX,lineIdx, 2);
+        return ticTacToeGrid.isPlayedCase(lineIdx, FIRST_COL_IDX)
+                && ticTacToeGrid.areCasesEqual(lineIdx, FIRST_COL_IDX,lineIdx,1)
+                && ticTacToeGrid.areCasesEqual(lineIdx, FIRST_COL_IDX,lineIdx, 2);
     }
 
 

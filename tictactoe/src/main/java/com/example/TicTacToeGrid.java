@@ -3,9 +3,9 @@ package com.example;
 public class TicTacToeGrid {
 
     public static final int FIRST_LINE_IDX = 0;
-    public static final int FIRST_ROW_IDX = 0;
+    public static final int FIRST_COL_IDX = 0;
     public static final int LINES_COUNT = 3;
-    public static final int ROWS_COUNT = 3;
+    public static final int COLS_COUNT = 3;
 
     public static final String EMPTY_CASE = " ";
     public static final String ROW_SEPARATOR = "-----------\n";
@@ -18,15 +18,15 @@ public class TicTacToeGrid {
         clear();
     }
 
-    public boolean canPlay(int lineIdx, int rowIdx) {
-        return EMPTY_CASE.equals(getCaseValue(lineIdx,rowIdx));
+    public boolean canPlay(int lineIdx, int columnIdx) {
+        return EMPTY_CASE.equals(getCaseValue(lineIdx,columnIdx));
     }
 
     public String print() {
         String result = "";
         for (int lineIdx = FIRST_LINE_IDX ; lineIdx < LINES_COUNT ; lineIdx++) {
-            for (int rowIdx = FIRST_ROW_IDX ; rowIdx < ROWS_COUNT ; rowIdx++) {
-                result += EMPTY_CASE + getCaseValue(lineIdx,rowIdx) + getSeparator(rowIdx);
+            for (int columnIdx = FIRST_COL_IDX; columnIdx < COLS_COUNT; columnIdx++) {
+                result += EMPTY_CASE + getCaseValue(lineIdx,columnIdx) + getSeparator(columnIdx);
             }
             if (lineIdx < LINES_COUNT - 1) {
                 result += ROW_SEPARATOR;
@@ -35,36 +35,36 @@ public class TicTacToeGrid {
         return result;
     }
 
-    public void play(String playerToken, int lineIdx, int rowIdx) {
-        setCaseValue(lineIdx, rowIdx, playerToken);
+    public void play(String playerToken, int lineIdx, int columnIdx) {
+        setCaseValue(lineIdx, columnIdx, playerToken);
     }
 
-    boolean isPlayedCase(int lineIdx, int rowIdx) {
-        return !EMPTY_CASE.equals(getCaseValue(lineIdx, rowIdx));
+    boolean isPlayedCase(int lineIdx, int columnIdx) {
+        return !EMPTY_CASE.equals(getCaseValue(lineIdx, columnIdx));
     }
 
-    boolean areCasesEqual(int firstCaseLineIdx, int firstCaseRowIdx, int secondCaseLineIdx, int secondCaseRowIdx) {
-        return getCaseValue(firstCaseLineIdx, firstCaseRowIdx).equals(getCaseValue(secondCaseLineIdx,secondCaseRowIdx));
+    boolean areCasesEqual(int firstCaseLineIdx, int firstCaseColumnIdx, int secondCaseLineIdx, int secondCaseColumnIdx) {
+        return getCaseValue(firstCaseLineIdx, firstCaseColumnIdx).equals(getCaseValue(secondCaseLineIdx,secondCaseColumnIdx));
     }
 
     private String getSeparator(int rowIdx) {
-        return rowIdx == ROWS_COUNT - 1 ? LINE_SEPARATOR : CASE_SEPARATOR;
+        return rowIdx == COLS_COUNT - 1 ? LINE_SEPARATOR : CASE_SEPARATOR;
     }
 
     private void clear() {
         for (int lineIdx = FIRST_LINE_IDX; lineIdx < LINES_COUNT; lineIdx++) {
-            for (int rowIdx = FIRST_ROW_IDX; rowIdx < ROWS_COUNT; rowIdx++) {
-                setCaseValue(lineIdx, rowIdx, EMPTY_CASE);
+            for (int columnIdx = FIRST_COL_IDX; columnIdx < COLS_COUNT; columnIdx++) {
+                setCaseValue(lineIdx, columnIdx, EMPTY_CASE);
             }
         }
     }
 
-    private void setCaseValue(int lineIdx, int rowIdx, String caseValue) {
-        grid[lineIdx][rowIdx] = caseValue;
+    private void setCaseValue(int lineIdx, int columnIdx, String caseValue) {
+        grid[lineIdx][columnIdx] = caseValue;
     }
 
-    String getCaseValue(int lineIdx, int rowIdx) {
-        return grid[lineIdx][rowIdx];
+    String getCaseValue(int lineIdx, int columnIdx) {
+        return grid[lineIdx][columnIdx];
     }
 
 }
